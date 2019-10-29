@@ -7,6 +7,7 @@ DIR_OBJ = ./obj
 SOURCE  := $(wildcard ${DIR_SRC}/*.c) $(wildcard ${DIR_SRC}/*.cpp)
 OBJS    := $(patsubst ${DIR_SRC}/%.c,${DIR_OBJ}/%.o,$(patsubst ${DIR_SRC}/%.cpp,${DIR_OBJ}/%.o,$(SOURCE)))
 TARGET  := espresso
+TARGET_L:= espresso.a
 
 #compiling parameters
 CC      := gcc
@@ -18,8 +19,10 @@ CFLAGS  := -g -Wall -O3 $(DEFINES) $(INCLUDE)
 CXXFLAGS:= $(CFLAGS)
 
 #commands
-.PHONY : all objs rebuild clean init ctag
+.PHONY : all lib objs rebuild clean init ctag
 all : ctag init $(TARGET)
+
+lib : ctag init $(TARGET_L)
 
 objs : init $(OBJS)
 
@@ -28,6 +31,7 @@ rebuild : clean all
 clean :
 	rm -rf $(DIR_OBJ)
 	rm -f $(TARGET)
+	rm -f $(TARGET_L)
 	rm -f tags
 
 init :
@@ -38,6 +42,9 @@ ctag :
 
 $(TARGET) : $(OBJS)
 	$(CC) $(CXXFLAGS) -o $@ $(OBJS) $(LDFLAGS) $(LIBS)
+
+$(TARGET_L) : $(OBJS)
+	ar cr $@ $(OBJS)
 
 ${DIR_OBJ}/%.o:${DIR_SRC}/%.c
 	$(CC) $(CXXFLAGS) -c $< -o $@
