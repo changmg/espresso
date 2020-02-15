@@ -28,11 +28,11 @@
  */
 
 /* Function prototypes */
-// #if defined(__STDC__) || defined(__cplusplus)
-// #define ARGS(args)	args
-// #else
-// #define ARGS(args)	()
-// #endif
+#if defined(__STDC__) || defined(__cplusplus)
+#define ARGS(args)	args
+#else
+#define ARGS(args)	()
+#endif
 
 #if defined(__cplusplus)
 #define NULLARGS	(void)
