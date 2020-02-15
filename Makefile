@@ -7,7 +7,7 @@ DIR_OBJ = ./obj
 SOURCE  := $(wildcard ${DIR_SRC}/*.c) $(wildcard ${DIR_SRC}/*.cpp)
 OBJS    := $(patsubst ${DIR_SRC}/%.c,${DIR_OBJ}/%.o,$(patsubst ${DIR_SRC}/%.cpp,${DIR_OBJ}/%.o,$(SOURCE)))
 TARGET  := espresso
-TARGET_L:= espresso.a
+TARGET_L:= libespresso.a
 
 #compiling parameters
 CC      := gcc
