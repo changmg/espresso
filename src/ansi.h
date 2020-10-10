@@ -29,7 +29,9 @@
 
 /* Function prototypes */
 #if defined(__STDC__) || defined(__cplusplus)
+#ifndef ARGS
 #define ARGS(args)	args
+#endif
 #else
 #define ARGS(args)	()
 #endif

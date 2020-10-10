@@ -131,7 +131,7 @@ extern void *malloc(), *realloc(), *calloc();
 #else
 extern char *malloc(), *realloc(), *calloc();
 #endif
-#if defined(aiws) 
+#if defined(aiws)
 extern int sprintf();
 #else
 #ifndef _IBMR2
