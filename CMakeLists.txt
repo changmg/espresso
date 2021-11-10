@@ -10,7 +10,7 @@ project(espresso)
 aux_source_directory(${PROJECT_SOURCE_DIR}/src sources)
 
 # Add definitions
-add_definitions(-g -Wall -O3 -std=c++17)
+add_definitions(-g -Wall -O3)
 
 # Add an static library with the above sources
 add_library(${PROJECT_NAME} STATIC ${sources})
